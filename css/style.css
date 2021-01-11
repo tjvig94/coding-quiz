@@ -2,3 +2,19 @@ button.startBtn {
     font-size: 40px;
     width: 50%;
 }
+
+div.questionBox {
+    /* display: none; */
+}
+
+li.answer {
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #666666;
+    color: white;
+}
+
+li.answer:hover {
+    background-color: #999999;
+    cursor: pointer;
+}

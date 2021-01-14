@@ -4,7 +4,7 @@ button.startBtn {
 }
 
 div.questionBox {
-    /* display: none; */
+    display: none;
 }
 
 li.answer {
@@ -17,5 +17,9 @@ li.answer {
 li.answer:hover {
     background-color: #999999;
     cursor: pointer;
+}
+
+div.questionBox {
+    display: none;
 }
 

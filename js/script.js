@@ -66,7 +66,7 @@ $(document).ready(function() {
         count = setInterval(function() { 
             secondsLeft--;
             $(".timer").text(secondsLeft);
-            localStorage.setItem("score", JSON.stringify(secondsLeft));
+            localStorage.setItem("score", secondsLeft);
             if (secondsLeft <= 0) {
                 secondsLeft === 0;
                 clearInterval(count);
@@ -87,9 +87,8 @@ $(document).ready(function() {
 
     $(".startBtn").on("click", game);
 
-    $(".submitName").on("click", function() {
-        let playerName = $(".nameInput").value;
-        localStorage['name'] = playerName;
+    $(".submitName").on("click", function() {        
+        localStorage.setItem("name", document.querySelector(".nameInput").value);
     });
 
 

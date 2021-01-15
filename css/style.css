@@ -7,6 +7,23 @@ div.questionBox {
     display: none;
 }
 
+div.highScoreBox {
+    display: none;
+}
+
+div.submitName {
+    width: 10%;
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #666666;
+    color: white;
+}
+
+div.submitName:hover {
+    background-color: #999999;
+    cursor: pointer;
+}
+
 li.answer {
     margin-bottom: 5px;
     padding: 10px;

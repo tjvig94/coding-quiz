@@ -37,14 +37,14 @@ $(document).ready(function() {
             ];
 
         
-
     let secondsLeft = 60;
-    
+    let userScores = JSON.parse(localStorage.getItem("Scores"));
     let i = 0;
-    function populateQuiz(i) {
-        if (i >= questions.length || secondsLeft <= 0) {
+
+    function populateQuiz() {
+        if (i >= questions.length) {
             $(".questionBox").hide();
-            $(".highScoreBox").show();
+            $(".enterScore").show();
             clearInterval(count);
         } else {
             $(".questionArea").text(questions[i].question);
@@ -57,43 +57,74 @@ $(document).ready(function() {
     };
     
     function game() {
-        // Populate fields
         $(".questionBox").show();
         $(".startBtn").hide();
         populateQuiz(i);
-        // Timer
         
         count = setInterval(function() { 
             secondsLeft--;
             $(".timer").text(secondsLeft);
-            localStorage.setItem("score", secondsLeft);
             if (secondsLeft <= 0) {
                 secondsLeft === 0;
+                $(".questionBox").hide();
+                $(".enterScore").show();                
                 clearInterval(count);
             };
         }, 1000);  
-
     }
 
     // Repopulate fields with new question and answers
     $(".answer").on("click", function() {
-    // Check to see if answer is correct or not
-        if (this.dataset.correct !== questions[i].correctAnswer) {
+        if (this.dataset.option !== questions[i].correctAnswer) {
             secondsLeft = secondsLeft-15;
+            $(".answerResult").text("Wrong!");
+        } else {
+            $(".answerResult").text("Correct!");
         };        
         i++;
         populateQuiz(i);
     });
 
+    function setScore() { 
+        let newScore = {
+            "name": $(".nameInput").val(),
+            "score": secondsLeft
+        };
+        (userScores == null) ? userScores = [] : "";
+        // localStorage.setItem("newScore", JSON.stringify(newScore));        
+        userScores.push(newScore);
+        localStorage.setItem("Scores", JSON.stringify(userScores));
+    };
+
+    // function getScore() {
+    //     if (localStorage.getItem("Scores") !== null) {
+    //         userScores = JSON.parse(localStorage.getItem("userScores"));
+    //     } else {
+    //         userScores = [];
+    //     };
+    // };
+
+    function appendScore() {
+        for (let i = 0; i < userScores.length; i++) {
+                 
+        };
+    };
+
     $(".startBtn").on("click", game);
 
-    $(".submitName").on("click", function() {        
-        localStorage.setItem("name", document.querySelector(".nameInput").value);
+    $(".submitName").on("click", function() {
+        let nameInput = $(".nameInput").val();
+        if (nameInput == "") { 
+            $(".alert").show();       
+        } else {
+            $(".enterScore").hide();
+            $(".highScoreBox").show();
+            setScore();            
+        };
     });
-
-
-
 });
+
+
     
 
 

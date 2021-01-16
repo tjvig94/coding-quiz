@@ -41,32 +41,51 @@
             <div class="questionBox col mt-5">
                 <h2 class="questionArea">What is the question I would like to be asking?</h2>
                 <ol>
-                    <li class="answer1 answer" data-correct="a">Option 1</li>
-                    <li class="answer2 answer" data-correct="b">Option 2</li>
-                    <li class="answer3 answer" data-correct="c">Option 3</li>
-                    <li class="answer4 answer"data-correct="d">Option 4</li>
+                    <li class="answer1 answer" data-option="a">Option 1</li>
+                    <li class="answer2 answer" data-option="b">Option 2</li>
+                    <li class="answer3 answer" data-option="c">Option 3</li>
+                    <li class="answer4 answer"data-option="d">Option 4</li>
                 </ol>
                 <hr>
+                <p class="answerResult"></p>
             </div>            
         </div>
     </div>
 
-    <div class="container highScoreBox">
+    <div class="container enterScore">
         <div class="row">
             <div class="col mt-5">
-                <h2>Enter your name to save your high score!</h2>
+                <h2>Enter your name to save your score!</h2>
                 <input type="text" class="nameInput">
                 <br>
                 <hr>
+            </div>              
+        </div>
+        <div class="row">
+            <div class="col submitName">
+                Submit
+            </div> 
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <p class="alert">You have to enter a name!</p>
             </div>
-            
-                <div class="row">
-                    <div class="col submitName">
-                        Submit
-                    </div> 
-                </div>   
-            
         </div>                       
+    </div>
+
+    <div class="container highScoreBox">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center">High Scores</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col scoreNames">
+
+            </div>
+            <div class="col scoreValues"></div>
+        </div>
     </div>
     
     

@@ -3,7 +3,7 @@ button.startBtn {
     width: 50%;
 }
 
-div.questionBox {
+div.enterScore {
     display: none;
 }
 
@@ -38,5 +38,11 @@ li.answer:hover {
 
 div.questionBox {
     display: none;
+}
+
+p.alert {
+    display: none;
+    color: red;
+    font-size: 20px;
 }
 

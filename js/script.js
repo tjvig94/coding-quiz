@@ -41,8 +41,6 @@ $(document).ready(function() {
     let userScores = JSON.parse(localStorage.getItem("Scores"));
     let i = 0;
 
-    console.log(userScores);
-
     function populateQuiz() {
         if (i >= questions.length) {
             $(".questionBox").hide();
@@ -93,19 +91,10 @@ $(document).ready(function() {
             "name": $(".nameInput").val(),
             "score": secondsLeft
         };
-        (userScores == null) ? userScores = [] : "";
-        // localStorage.setItem("newScore", JSON.stringify(newScore));        
+        (userScores == null) ? userScores = [] : "";        
         userScores.push(newScore);
         localStorage.setItem("Scores", JSON.stringify(userScores));
     };
-
-    // function getScore() {
-    //     if (localStorage.getItem("Scores") !== null) {
-    //         userScores = JSON.parse(localStorage.getItem("userScores"));
-    //     } else {
-    //         userScores = [];
-    //     };
-    // };
 
     function appendScore() {
         for (let i = 0; i < userScores.length; i++) {
@@ -115,7 +104,7 @@ $(document).ready(function() {
 
     $(".startBtn").on("click", game);
 
-    $(".submitName").on("click", function() {
+    function enterName() {
         let nameInput = $(".nameInput").val();
         if (nameInput == "") { 
             $(".alert").show();       
@@ -125,14 +114,22 @@ $(document).ready(function() {
             setScore();
             appendScore();            
         };
-    });
+    }
+    
+    $(".submitName").on("click", enterName);
+    $(".nameInput").keypress(function(event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            enterName();
+        };
+    })
 
-    // $(".playAgain").on("click", function() {
-    //     $(".highScoreBox").hide();
-    //     $(".startBtn").show();
-    //     secondsLeft = 60;
-    //     $(".timer").text(secondsLeft);
-    // });
+    $(".view-scores").on("click", function() {
+        appendScore();
+        $(".startBtn").hide();
+        $(".highScoreBox").show();   
+        $(".view-scores").text("");
+    })
 });
 
 

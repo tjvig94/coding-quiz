@@ -1,4 +1,4 @@
-button.startBtn {
+button.startBtn, button.playAgain {
     font-size: 40px;
     width: 50%;
 }
@@ -44,5 +44,12 @@ p.alert {
     display: none;
     color: red;
     font-size: 20px;
+}
+
+ul.scoreList li {
+    background-color: #666666;
+    color: white;
+    margin-bottom: 5px;
+    padding: 10px;
 }
 

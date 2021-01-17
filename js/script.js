@@ -41,6 +41,8 @@ $(document).ready(function() {
     let userScores = JSON.parse(localStorage.getItem("Scores"));
     let i = 0;
 
+    console.log(userScores);
+
     function populateQuiz() {
         if (i >= questions.length) {
             $(".questionBox").hide();
@@ -59,6 +61,7 @@ $(document).ready(function() {
     function game() {
         $(".questionBox").show();
         $(".startBtn").hide();
+        $(".highScoreBox").hide();
         populateQuiz(i);
         
         count = setInterval(function() { 
@@ -106,7 +109,7 @@ $(document).ready(function() {
 
     function appendScore() {
         for (let i = 0; i < userScores.length; i++) {
-                 
+            $("ul.scoreList").append("<li>"+ userScores[i].name + ": " + userScores[i].score +"</li>");
         };
     };
 
@@ -119,9 +122,17 @@ $(document).ready(function() {
         } else {
             $(".enterScore").hide();
             $(".highScoreBox").show();
-            setScore();            
+            setScore();
+            appendScore();            
         };
     });
+
+    // $(".playAgain").on("click", function() {
+    //     $(".highScoreBox").hide();
+    //     $(".startBtn").show();
+    //     secondsLeft = 60;
+    //     $(".timer").text(secondsLeft);
+    // });
 });
 
 
